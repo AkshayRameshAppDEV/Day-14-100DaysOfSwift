@@ -35,3 +35,75 @@ str = nil // will return nil
 // and code wont crash with these 2 below methods
 let optionalChaining = str?.uppercased()
 let nilCoalescing = str ?? "BAD"
+
+// Enumerations
+// own data type with enumerated values
+// has predefined set of values
+// avoids users typo error
+// enums can have additional values like params
+// Default enumerated by 0 otherwise can have a starter value
+
+enum Sports {
+    case CRICKET(type: String)
+    case FOOTBALL
+    case TENNIS
+}
+
+let cricket: Sports
+cricket = .CRICKET(type: "IPL")
+
+// Structs
+// Own data structures with properties and methods
+struct Animal {
+    var name: String
+    var numOfLegs: Int
+    
+    init(name: String, numOfLegs: Int) {
+        self.name = name
+        self.numOfLegs = numOfLegs
+    }
+    
+    func printify() {
+        print("\(name) : \(numOfLegs)")
+    }
+}
+
+let dog = Animal(name: "Tom", numOfLegs: 4)
+dog.printify()
+
+// Classes
+// Similar to struct
+// should have initializers and can be inherited
+// they are by reference in nature
+// can be deallocated
+// Functions of super class can be overidden in inheritence
+// initialize based on super class, user super.init
+class Developer {
+    var name: String
+    var numOfExpereience: Int
+    
+    init(name: String, numberOfExperience: Int) {
+        self.name = name
+        self.numOfExpereience = numberOfExperience
+    }
+    
+    func myRole(){
+        print("I am a Developer")
+    }
+}
+
+class JuniorDeveloper: Developer {
+    var nameOfDev: String
+    
+    init(nameOfDev: String) {
+        self.nameOfDev = nameOfDev
+        super.init(name: nameOfDev, numberOfExperience: 1)
+    }
+    
+    override func myRole() {
+        print("I am junior developer \(nameOfDev)")
+    }
+}
+
+let ak = JuniorDeveloper(nameOfDev: "Ak")
+ak.myRole()
